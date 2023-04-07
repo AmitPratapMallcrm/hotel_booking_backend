@@ -21,12 +21,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-//this is for vivek
+//this is for vivek new changes  
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 // Route::get('/customer',[CustomerController::class,'index']);
 Route::post('/register', [RegisterController::class, 'store']);
- 
+
 Route::post('/login', [LoginController::class, 'check']);
 Route::post('/loginmail', [LoginController::class, 'getdetail']);
