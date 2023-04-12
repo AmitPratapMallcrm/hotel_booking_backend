@@ -32,5 +32,7 @@ Route::post('/register', [RegisterController::class, 'store']);
 Route::post('/login', [LoginController::class, 'check']);
 Route::post('/tokenvalidate', [LoginController::class, 'tokenvalidate']);
 Route::post('/hotelRegister', [HotelController::class, 'store']);
-Route::get('/myhotel', [HotelController::class, 'showByuserId']);
+Route::get('/hotellist', [HotelController::class, 'hotellist']);
+Route::get('/hotelbyid/{id}', [HotelController::class, 'hotelbyid']);
+
 //Route::post('/loginmail', [LoginController::class, 'getdetail']);

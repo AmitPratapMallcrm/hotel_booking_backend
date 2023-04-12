@@ -42,6 +42,49 @@ class DatabaseSeeder extends Seeder
             'api_token' => Str::random(60),
             ] );
             DB::table('users')->insert([
+                'name' => 'hotel4',
+                'email' => 'hotel4@gmail.com',
+                'password' => Hash::make('hotel4'),
+                'role_id' => '2',
+                'api_token' => Str::random(60),
+                ] );
+                DB::table('users')->insert([
+                    'name' => 'hotel5',
+                    'email' => 'hotel5@gmail.com',
+                    'password' => Hash::make('hotel5'),
+                    'role_id' => '2',
+                    'api_token' => Str::random(60),
+                    ] );
+                    DB::table('users')->insert([
+                        'name' => 'hotel6',
+                        'email' => 'hotel6@gmail.com',
+                        'password' => Hash::make('hotel6'),
+                        'role_id' => '2',
+                        'api_token' => Str::random(60),
+                        ] );
+
+                        DB::table('users')->insert([
+                            'name' => 'hotel7',
+                            'email' => 'hotel7@gmail.com',
+                            'password' => Hash::make('hotel7'),
+                            'role_id' => '2',
+                            'api_token' => Str::random(60),
+                            ] );
+                            DB::table('users')->insert([
+                                'name' => 'hotel8',
+                                'email' => 'hotel8@gmail.com',
+                                'password' => Hash::make('hotel8'),
+                                'role_id' => '2',
+                                'api_token' => Str::random(60),
+                                ] );
+                                DB::table('users')->insert([
+                                    'name' => 'hotel9',
+                                    'email' => 'hotel9@gmail.com',
+                                    'password' => Hash::make('hotel9'),
+                                    'role_id' => '2',
+                                    'api_token' => Str::random(60),
+                                    ] );
+            DB::table('users')->insert([
             'name' => 'user1',
             'email' => 'user1@gmail.com',
             'password' => Hash::make('user1'),
