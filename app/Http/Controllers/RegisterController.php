@@ -22,6 +22,20 @@ class RegisterController extends Controller
             'message' => "Registation Success"
         ]);
     }
+    public function createhotel(Request $request)
+    {
+        $input = $request->all();
+        User::create([
+            'name' => $input['name'],
+            'email' => $input['email'],
+            'password' => Hash::make($input['password']),
+            'role_id'=>$input['role_id'],
+        ]);
+        return response()->json([
+            'status' => true,
+            'message' => "Registation Success"
+        ]);
+    }
 }
 
 

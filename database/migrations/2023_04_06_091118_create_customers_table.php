@@ -23,6 +23,8 @@ class CreateCustomersTable extends Migration
             $table->unsignedBigInteger('user_id')->unique();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
+
+       
     }
 
     /**

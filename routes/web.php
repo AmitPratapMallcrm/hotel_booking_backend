@@ -1,8 +1,8 @@
 <?php
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
+
+use App\Http\Controllers\PaymentController;
 
 
 /*
@@ -15,13 +15,7 @@ use App\Http\Controllers\LoginController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/',function(){
-return view('welcome');
-});
-Route::get('/loginp', [LoginController::class, 'getdetail']);
 
 
-
- 
-
-
+// Route::get('/',         [PaymentController::class, 'index']);
+// Route::post('/payment', [PaymentController::class, 'payment']);

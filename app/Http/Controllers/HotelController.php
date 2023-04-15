@@ -50,4 +50,31 @@ class HotelController extends Controller
     $hotels = DB::table('hotels')->where('id' , $id )->get();
     return response()->json($hotels);
    }
+   public function show($id)
+    {
+        $contact = Hotel::find($id);
+        return response()->json($contact);
+    }
+   public function update(Request $request, $id)
+    {
+       $hotels = Hotel::find($id);
+       $hotels->update($request->all());
+       return response()->json('Hotel updated');
+    }
+   public function index()
+    {
+        $hotels = Hotel::all();
+        return response()->json($hotels);
+    }
+    public function count()
+    {
+        $count = Hotel::all()->count();
+        return response()->json($count);
+    }
+    public function destroy($id)
+    {
+        $hotels = Hotel::find($id);
+        $hotels->delete();
+        return response()->json(' deleted!');
+    }
 }
