@@ -12,44 +12,40 @@ class HotelController extends Controller
     public function store(Request $request)
     {
         $input = $request->all();
-        Hotel::create([
-            'hotel_name' => $input['name'],
-        'email'=> $input['email'],
-        'location'=> $input['district'],
-        'availability'=> $input['available'],
+       $user = Hotel::create([
         'phonenumber'=> $input['number'],
-        'availroom'=> $input['availroom'],
         'wifi'=> $input['wifi'],
-        'user_id'=> $input['userId']
+        'availability'=> $input['avail'],
+        'address'=> $input['address'],
+        'location'=> $input['pincode'],
+        'district'=> $input['district'],
+        'numberofavailroom'=> $input['totalroom'],
+        'hotelimage'=> $input['imglink'],
+        'user_id'=> $input['userId'],
+        
         ]);
+        $insertedId = $user->id;
+
+
         return response()->json([
             'status' => true,
-            'message' => "Registation Success"
+            'message' => "Registation Success",
+            'id'=> $insertedId
         ]);
     }
     public function hotellist()
     {
-        $post = DB::table('hotels')->simplepaginate(2);
-        $pageCount= count(Hotel::all())/2;
+        $post = DB::table('hotels')->select('hotels.id AS hotelid',"users.name","users.email","hotels.district","hotels.address","hotels.location","hotels.phonenumber","hotels.hotelimage","hotels.numberofavailroom")->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
+       // $post = DB::table('hotels')->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
+        $pageCount= count(Hotel::all())/6;
     	return response()->json(
             ['paginate'=>$post,
+             // 'post1' =>$post1,
             'page_count'=>ceil($pageCount)
             ]
         );
-//   $hotels = DB::table('hotels')->paginate(6);
-//   $pageCount= count(Hotel::all())/6;
-//   return response()->json([
-//                'status' => true,
-//                'message' => "Success",
-//                'users' => $hotels,
-//                'page_count'=>ceil($pageCount)
-//            ]);
+
     }
-   public function hotelbyid($id)
-   {
-    $hotels = DB::table('hotels')->where('id' , $id )->get();
-    return response()->json($hotels);
-   }
    public function show($id)
     {
         $contact = Hotel::find($id);

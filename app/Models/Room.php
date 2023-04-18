@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Room extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'roomtype',
+        'price',
+        'facilities',
+        'image',
+        'avail',
+        'numberofroom',
+        'hotel_id',
+    ];
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
 }

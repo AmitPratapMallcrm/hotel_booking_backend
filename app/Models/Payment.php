@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payment extends Model
 {
+    protected $fillable = [
+        'amount',
+        'booking_id',
+       
+    ];
     use HasFactory;
+    public function booking()
+    {
+        return $this->belongsTo(Booking::class);
+    }
 }

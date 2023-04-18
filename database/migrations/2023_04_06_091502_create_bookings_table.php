@@ -19,8 +19,11 @@ class CreateBookingsTable extends Migration
             $table->date('arival');
             $table->date('departure');
             $table->string('message');
-            $table->unsignedBigInteger('room_id')->index();
-            $table->foreign('room_id')->references('id')->on('rooms')->onDelete('cascade');
+            $table->integer('numberofroomtype1');
+            $table->integer('numberofroomtype2');
+            $table->integer('numberofroomtype3');
+            $table->unsignedBigInteger('hotel_id')->index();
+            $table->foreign('hotel_id')->references('id')->on('hotels')->onDelete('cascade');
             $table->unsignedBigInteger('customer_id')->index();
             $table->foreign('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();

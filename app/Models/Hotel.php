@@ -7,13 +7,26 @@ class Hotel extends Model
 {
     use HasFactory;
      protected $fillable = [
-        'hotel_name',
-        'email',
+        'district',
+        'address',
         'location',
-        'availability',
         'phonenumber',
-        'availroom',
+        'numberofavailroom',
+        'hotelimage',
         'wifi',
+        'availability',
         'user_id'
     ];
+    public function room()
+    {
+        return $this->hasMany(Room::class);
+    }
+    public function booking()
+    {
+        return $this->hasMany(Booking::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

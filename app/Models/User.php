@@ -1,11 +1,23 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Model;
+class Customer extends Model
+{
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role_id',
+        'api_token',
+        'id'
+    ];
+   
+}
 
 class User extends Authenticatable
 {
@@ -21,7 +33,8 @@ class User extends Authenticatable
         'email',
         'password',
         'role_id',
-        'api_token'
+        'api_token',
+        'id'
     ];
 
     /**
@@ -32,7 +45,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
-        'api_token'
+        'api_token',
+        
     ];
 
     /**
@@ -43,4 +57,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function hotel()
+    {
+        return $this->hasOne(Hotel::class);
+    }
+    public function customer()
+    {
+        return $this->hasOne(Customer::class);
+    }
+    
+    
+    
 }

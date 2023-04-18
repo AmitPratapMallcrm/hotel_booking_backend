@@ -5,7 +5,9 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RoomController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +31,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register', [RegisterController::class, 'store']);
+Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [LoginController::class, 'check']);
 Route::post('/tokenvalidate', [LoginController::class, 'tokenvalidate']);
 Route::post('/hotelRegister', [HotelController::class, 'store']);
 Route::get('/hotellist', [HotelController::class, 'hotellist']);
-Route::get('/hotelbyid/{id}', [HotelController::class, 'hotelbyid']);
+Route::get('/roombyid/{id}', [RoomController::class, 'roombyid']);
 Route::get('/customerbyid/{id}', [CustomerController::class, 'customerbyid']);
 Route::post('/payment', [PaymentController::class, 'payment']);
 Route::get('/customerdata', [CustomerController::class, 'index']);
@@ -47,4 +49,8 @@ Route::get('/bookingdatacount', [BookingController::class, 'count']);
 Route::put('/update/{id}',[HotelController::class, 'update']);
 Route::delete('/deletehotel/{id}',[HotelController::class, 'destroy']);
 Route::delete('/deletecustomer/{id}',[CustomerController::class, 'destroy']);
+Route::post('/roomRegister', [RoomController::class, 'store']);
+Route::post('/customer', [CustomerController::class, 'store']);
+Route::post('/booking', [BookingController::class, 'store']);
+Route::post('/paymentdetail', [PaymentController::class, 'store']);
 //Route::post('/loginmail', [LoginController::class, 'getdetail']);

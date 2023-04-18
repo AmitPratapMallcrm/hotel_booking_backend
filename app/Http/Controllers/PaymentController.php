@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Payment;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -95,5 +96,20 @@ class PaymentController extends Controller
       //  return response()->redirectTo('/');
     }
 
+public function store(Request $request)
+{
+       $input = $request->all();
+       Payment::create([
+            'booking_id' => $input['booking_id'],
+            'amount' => $input['amount']/100,
+           
+        ]);
+         return response()->json([
+            'status' => true,
+            'message' => "Success",
+          
+          
+        ]);
+}
     
 }

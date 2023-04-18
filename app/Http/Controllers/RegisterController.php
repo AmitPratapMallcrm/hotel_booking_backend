@@ -7,8 +7,10 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
-    public function store(Request $request)
+   
+    public function createhotel(Request $request)
     {
+        
         $input = $request->all();
         User::create([
             'name' => $input['name'],
@@ -17,23 +19,11 @@ class RegisterController extends Controller
             'role_id'=>$input['role_id'],
             'api_token'=> Str::random(60),
         ]);
+       
         return response()->json([
             'status' => true,
-            'message' => "Registation Success"
-        ]);
-    }
-    public function createhotel(Request $request)
-    {
-        $input = $request->all();
-        User::create([
-            'name' => $input['name'],
-            'email' => $input['email'],
-            'password' => Hash::make($input['password']),
-            'role_id'=>$input['role_id'],
-        ]);
-        return response()->json([
-            'status' => true,
-            'message' => "Registation Success"
+            'message' => "Registation Success",
+            
         ]);
     }
 }
