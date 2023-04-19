@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 class HotelController extends Controller
 {
     public function store(Request $request)
@@ -25,7 +26,7 @@ class HotelController extends Controller
         
         ]);
         $insertedId = $user->id;
-
+       
 
         return response()->json([
             'status' => true,
@@ -36,11 +37,9 @@ class HotelController extends Controller
     public function hotellist()
     {
         $post = DB::table('hotels')->select('hotels.id AS hotelid',"users.name","users.email","hotels.district","hotels.address","hotels.location","hotels.phonenumber","hotels.hotelimage","hotels.numberofavailroom")->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
-       // $post = DB::table('hotels')->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
         $pageCount= count(Hotel::all())/6;
     	return response()->json(
             ['paginate'=>$post,
-             // 'post1' =>$post1,
             'page_count'=>ceil($pageCount)
             ]
         );
@@ -59,8 +58,12 @@ class HotelController extends Controller
     }
    public function index()
     {
-        $hotels = Hotel::all();
-        return response()->json($hotels);
+        
+    $hotels = User::join('hotels', 'users.id', '=', 'hotels.user_id')
+    ->select('users.*', 'hotels.*')
+    ->get();    
+    return response()->json($hotels);
+        
     }
     public function count()
     {
@@ -69,8 +72,31 @@ class HotelController extends Controller
     }
     public function destroy($id)
     {
-        $hotels = Hotel::find($id);
-        $hotels->delete();
-        return response()->json(' deleted!');
+        $hotel = Hotel::findOrFail($id);
+        $user = $hotel->user;
+        
+        if ($user) {
+            $user->delete();
+        }
+        
+        $hotel->delete();
+
+
+        // $hotels = Hotel::find($id);
+        // $hotels->delete();
+        // return response()->json(' deleted!');
     }
+    
+    public function hotelbyid($id)
+    {
+       
+    //  $users = DB::table('customers')->where('user_id' , $id )->get();
+    //  return response()->json($users);
+    $hotels = User::join('hotels', 'users.id', '=', 'hotels.user_id')
+    ->select('users.*', 'hotels.*')->where('user_id' , $id )
+    ->get();    
+    return response()->json($hotels);
+    }
+
+
 }

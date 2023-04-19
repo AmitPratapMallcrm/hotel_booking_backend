@@ -11,16 +11,26 @@ class CustomerController extends Controller
 {
     public function customerbyid($id)
     {
-     $users = DB::table('customers')->where('user_id' , $id )->get();
-     return response()->json($users);
+       
+    //  $users = DB::table('customers')->where('user_id' , $id )->get();
+    //  return response()->json($users);
+    $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
+    ->select('users.*', 'customers.*')->where('user_id' , $id )
+    ->get();    
+    return response()->json($customers);
     }
     public function index()
     {
-        $customer =Customer::all()->where('role_id' , 3 );
-      //  $customer =User::all()->join('customers','customers.user_id','=','users.id');
-        return response()->json($customer);
-        // $customers = Customer::all();
-        // return response()->json($customers);
+    
+    //    $customers = DB::table('users')
+    //     ->join('customers', 'users.id', '=', 'customers.user_id')
+    //     ->select('users.*', 'customers.*')
+    //     ->get();
+
+    $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
+        ->select('users.*', 'customers.*')
+        ->get();    
+        return response()->json($customers);
     }
     public function count()
     {
@@ -29,10 +39,26 @@ class CustomerController extends Controller
     }
     public function destroy($id)
     {
-        $customers = Customer::find($id);
-        $customers->delete();
-        return response()->json(' deleted!');
-    }
+
+        $user = DB::table('users')
+        ->join('customers', 'users.id', '=', 'customers.user_id')
+        ->where('customers.id', $id)
+        ->select('users.*')
+        ->first();
+        if ($user) {
+            DB::table('users')->where('id', $user->id)->delete();
+            DB::table('customers')->where('id', $id)->delete();
+        }
+//  $customer = Customer::findOrFail($id);
+// $user = $customer->user;
+
+// if ($user) {
+//     $user->delete();
+// }
+
+// $customer->delete();
+
+}
     public function store(Request $request)
     {
         $input = $request->all();

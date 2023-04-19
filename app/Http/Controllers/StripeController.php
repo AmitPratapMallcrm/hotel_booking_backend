@@ -17,17 +17,6 @@ class StripeController extends Controller
 
     public function stripePost(Request $request)
     {
-    //     Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-    //     Stripe\Charge::create ([
-    //             "amount" => 100*100,
-    //             "currency" => "usd",
-    //             "source" => $request->stripeToken,
-    //             "description" => "This is test payment",
-    //     ]);
-   
-    //    Session::flash('success', 'Payment Successful !');
-           
-    //     return back();
     $stripe = new \Stripe\StripeClient('sk_test_51MwiyfDsKChPa6XozhGMaVRpbEwR0G9VQBATnpM3FAR65Ee0R3uGyu5fBwM2J0q2D2xEZZnhFEK1DwdpjRLjyYsr00zMXSBWzs');
 
 $checkout_session = $stripe->checkout->sessions->create([

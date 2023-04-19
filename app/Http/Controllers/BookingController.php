@@ -3,15 +3,59 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Hotel;
+use App\Models\Customer;
 use App\Models\Booking;
 class BookingController extends Controller
 {
     
     public function index()
     {
-        $bookings = Booking::all();
+$bookings = Booking::all();
+ return response()->json($bookings);
+      
+    } 
+  
+    public function detail($id)
+    {
+        //imp
+      //  $bookings = Booking::where('customer_id', $id)->get();
+        // $bookings = Booking::where('customer_id', $id);
+        // $hotel_name=$bookings->hotel->user->name;
+        // return response()->json($hotel_name);
+// imp
+        // $hotelName = Booking::select('users.name')
+        //         ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
+        //         ->join('users', 'hotels.user_id', '=', 'users.id')
+        //         ->where('bookings.customer_id', $id)
+        //         ->value('hotels.name');
+        $hotelName = Booking::select('users.name','bookings.price','bookings.arival','bookings.departure')
+            ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
+            ->join('users', 'hotels.user_id', '=', 'users.id')
+            ->where('bookings.customer_id', $id)
+            ->get()
+            ;
+//->pluck('name')
+         return response()->json($hotelName);
+    }
+    public function detailhotel($id)
+    {
+       
+        $customerName = Booking::select('users.name','bookings.price','bookings.arival','bookings.departure')
+            ->join('customers', 'bookings.customer_id', '=', 'customers.id')
+            ->join('users', 'customers.user_id', '=', 'users.id')
+            ->where('bookings.hotel_id', $id)
+            ->get()
+            ;
+//->pluck('name')
+         return response()->json($customerName);
+    }
+    public function hotelbooking($id)
+    {
+        $bookings = Booking::all()->where('hotel_id', '=', $id);
         return response()->json($bookings);
     }
+    
     public function count()
     {
         $count = Booking::all()->count();

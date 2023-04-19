@@ -38,6 +38,10 @@ Route::post('/hotelRegister', [HotelController::class, 'store']);
 Route::get('/hotellist', [HotelController::class, 'hotellist']);
 Route::get('/roombyid/{id}', [RoomController::class, 'roombyid']);
 Route::get('/customerbyid/{id}', [CustomerController::class, 'customerbyid']);
+Route::get('/hotelbyid/{id}', [HotelController::class, 'hotelbyid']);
+Route::get('/bookingdetail/{id}', [BookingController::class, 'detail']);
+Route::get('/bookingdetailhotel/{id}', [BookingController::class, 'detailhotel']);
+
 Route::post('/payment', [PaymentController::class, 'payment']);
 Route::get('/customerdata', [CustomerController::class, 'index']);
 Route::get('/customerdatacount', [CustomerController::class, 'count']);
@@ -53,4 +57,3 @@ Route::post('/roomRegister', [RoomController::class, 'store']);
 Route::post('/customer', [CustomerController::class, 'store']);
 Route::post('/booking', [BookingController::class, 'store']);
 Route::post('/paymentdetail', [PaymentController::class, 'store']);
-//Route::post('/loginmail', [LoginController::class, 'getdetail']);
