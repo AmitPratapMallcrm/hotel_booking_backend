@@ -92,5 +92,174 @@ class RoomSeeder extends Seeder
             'numberofroom' => '7',
             'hotel_id' => '3'
         ]);
+
+
+
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '4'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '4'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '4'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '5'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '5'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '5'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '6'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '6'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '6'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '7'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '7'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '7'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '8'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '8'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '8'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '1',
+            'price' => '129',
+            'facilities' => 'mini-bars, free Wmore. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTZ8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '8',
+            'hotel_id' => '9'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '2',
+            'price' => '285',
+            'facilities' => 'bars, free Wi-Fi, coffities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1600121848594-d8644e57abab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHJvb21zfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '6',
+            'hotel_id' => '9'
+        ]);
+        DB::table('rooms')->insert([
+            'roomtype' => '3',
+            'price' => '350',
+            'facilities' => 'ators, mini-bars and more. Amenities often include personal items like the toiletries the hotel provides. They can also include things that make a room more comfortable, such as air-conditioning.',
+            'image' => 'https://images.unsplash.com/photo-1551105378-78e609e1d468?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTd8fHJvb218ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+            'avail' => '1',
+            'numberofroom' => '7',
+            'hotel_id' => '9'
+        ]);
+
+
+
+
     }
 }
