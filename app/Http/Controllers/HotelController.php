@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hotel;
+use App\Models\Room;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -34,6 +35,77 @@ class HotelController extends Controller
             'id'=> $insertedId
         ]);
     }
+    public function shows($id)
+    {
+       $hotel=Hotel::join('rooms', 'hotels.id', '=', 'rooms.hotel_id')
+               ->select('hotels.*','rooms.*')->where('hotels.id',$id)->get();
+       // $hotel =  Hotel::find($id)->room;
+        if($hotel)
+        {
+            return response()->json([
+                'status'=>200,
+                'hotel'=>$hotel,
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status'=>404,
+                'message'=>"no hotel found"
+            ],404);
+        }
+    
+}
+    
+    public function edit(Request $request,$id)
+    {
+        $input = $request->all();
+        
+       
+        $hotel =  Hotel::find($id);
+        $rooms= Room::where('hotel_id' , $id)->get();
+        if($hotel)
+        {
+            $hotel->phonenumber = $input['number'];
+            $hotel->wifi= $input['wifi'];
+            $hotel->availability= $input['avail'];
+            $hotel->address = $input['address'];
+            $hotel->location = $input['pincode'];
+            $hotel->district = $input['district'];
+            $hotel->numberofavailroom = $input['totalroom'];
+            $hotel->hotelimage = $input['imglink'];
+           $hotel->update();
+        
+            return response()->json([
+                'status'=>200,
+                'room'=> $rooms,
+                'message'=>'hotel updated Succesfully',
+            ], 200);
+        }
+        else{
+            return response()->json([
+                'status'=>404,
+                'message'=>"no hotel found"
+            ],404);
+        }
+    
+}
+    public function hotelfind(Request $request)
+    {
+        $input = $request->all();
+       
+        $post =  Hotel::where('user_id',$input['userId'])->count();
+           
+       
+       
+         return response()->json([
+             'status' => true,
+             'message' => "Success",
+             'users' => $post
+         ]);
+      
+
+    
+}
     public function hotellist()
     {
         $post = DB::table('hotels')->select('hotels.id AS hotelid',"users.name","users.email","hotels.district","hotels.address","hotels.location","hotels.phonenumber","hotels.hotelimage","hotels.numberofavailroom")->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
@@ -72,6 +144,7 @@ class HotelController extends Controller
     }
     public function destroy($id)
     {
+
         $hotel = Hotel::findOrFail($id);
         $user = $hotel->user;
         

@@ -35,13 +35,16 @@ Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [LoginController::class, 'check']);
 Route::post('/tokenvalidate', [LoginController::class, 'tokenvalidate']);
 Route::post('/hotelRegister', [HotelController::class, 'store']);
+Route::post('/hotelfind', [HotelController::class, 'hotelfind']);
 Route::get('/hotellist', [HotelController::class, 'hotellist']);
 Route::get('/roombyid/{id}', [RoomController::class, 'roombyid']);
 Route::get('/customerbyid/{id}', [CustomerController::class, 'customerbyid']);
 Route::get('/hotelbyid/{id}', [HotelController::class, 'hotelbyid']);
 Route::get('/bookingdetail/{id}', [BookingController::class, 'detail']);
 Route::get('/bookingdetailhotel/{id}', [BookingController::class, 'detailhotel']);
-
+Route::get('/hotel/{id}/edit', [HotelController::class, 'shows']);
+Route::put('/hotel/{id}/edit', [HotelController::class, 'edit']);
+Route::put('/room/{id}/edit', [RoomController::class, 'edit']);
 Route::post('/payment', [PaymentController::class, 'payment']);
 Route::get('/customerdata', [CustomerController::class, 'index']);
 Route::get('/customerdatacount', [CustomerController::class, 'count']);
