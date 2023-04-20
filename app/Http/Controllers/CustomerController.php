@@ -11,17 +11,17 @@ class CustomerController extends Controller
 {
     public function customerbyid($id)
     {
-       
+
     //  $users = DB::table('customers')->where('user_id' , $id )->get();
     //  return response()->json($users);
-    $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
-    ->select('users.*', 'customers.*')->where('user_id' , $id )
-    ->get();    
+        $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
+        ->select('users.*', 'customers.*')->where('user_id' , $id )
+        ->get();
     return response()->json($customers);
     }
     public function index()
     {
-    
+
     //    $customers = DB::table('users')
     //     ->join('customers', 'users.id', '=', 'customers.user_id')
     //     ->select('users.*', 'customers.*')
@@ -29,14 +29,19 @@ class CustomerController extends Controller
 
     $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
         ->select('users.*', 'customers.*')
-        ->get();    
+        ->get();
         return response()->json($customers);
     }
+
+
+
     public function count()
     {
         $count = Customer::all()->count();
         return response()->json($count);
     }
+
+    
     public function destroy($id)
     {
 
@@ -68,11 +73,11 @@ class CustomerController extends Controller
             'addharnumber' => $input['addharnumber'],
             'user_id' =>$input['user_id'],
         ]);
-      
+
         return response()->json([
             'status' => true,
             'message' => "Registation Success",
-          
+
         ]);
     }
 }

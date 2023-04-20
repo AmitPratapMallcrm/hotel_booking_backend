@@ -8,14 +8,14 @@ use App\Models\Customer;
 use App\Models\Booking;
 class BookingController extends Controller
 {
-    
+
     public function index()
     {
 $bookings = Booking::all();
  return response()->json($bookings);
-      
-    } 
-  
+
+    }
+
     public function detail($id)
     {
         //imp
@@ -33,14 +33,17 @@ $bookings = Booking::all();
             ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
             ->join('users', 'hotels.user_id', '=', 'users.id')
             ->where('bookings.customer_id', $id)
-            ->get()
-            ;
+            ->get();
+
 //->pluck('name')
          return response()->json($hotelName);
     }
+
+
+
     public function detailhotel($id)
     {
-       
+
         $customerName = Booking::select('users.name','bookings.price','bookings.arival','bookings.departure')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('users', 'customers.user_id', '=', 'users.id')
@@ -55,14 +58,14 @@ $bookings = Booking::all();
         $bookings = Booking::all()->where('hotel_id', '=', $id);
         return response()->json($bookings);
     }
-    
+
     public function count()
     {
         $count = Booking::all()->count();
         return response()->json($count);
     }
     public function store(Request $request)
-    { 
+    {
         $input = $request->all();
         $cust = User::find($input['customer_id'])->customer;
         $customer_id= $cust->id;
@@ -78,13 +81,15 @@ $bookings = Booking::all();
             'hotel_id' => $input['hotel_id'],
             'customer_id'=>$customer_id,
         ]);
-       
+
         $bookingId = $user->id;
         return response()->json([
             'status' => true,
             'message' => "Registation Success",
             'id'=>$bookingId,
-          
+
         ]);
     }
 }
+
+
