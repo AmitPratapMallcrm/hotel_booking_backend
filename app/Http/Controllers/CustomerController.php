@@ -5,16 +5,13 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Customer;
-use App\Models\User;
 
 class CustomerController extends Controller
 {
     public function customerbyid($id)
     {
 
-    //  $users = DB::table('customers')->where('user_id' , $id )->get();
-    //  return response()->json($users);
-        $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
+        $customers = DB::table('users')->join('customers', 'users.id', '=', 'customers.user_id')
         ->select('users.*', 'customers.*')->where('user_id' , $id )
         ->get();
     return response()->json($customers);
@@ -22,12 +19,7 @@ class CustomerController extends Controller
     public function index()
     {
 
-    //    $customers = DB::table('users')
-    //     ->join('customers', 'users.id', '=', 'customers.user_id')
-    //     ->select('users.*', 'customers.*')
-    //     ->get();
-
-    $customers = User::join('customers', 'users.id', '=', 'customers.user_id')
+    $customers = DB::table('users')->join('customers', 'users.id', '=', 'customers.user_id')
         ->select('users.*', 'customers.*')
         ->get();
         return response()->json($customers);
@@ -54,14 +46,6 @@ class CustomerController extends Controller
             DB::table('users')->where('id', $user->id)->delete();
             DB::table('customers')->where('id', $id)->delete();
         }
-//  $customer = Customer::findOrFail($id);
-// $user = $customer->user;
-
-// if ($user) {
-//     $user->delete();
-// }
-
-// $customer->delete();
 
 }
     public function store(Request $request)

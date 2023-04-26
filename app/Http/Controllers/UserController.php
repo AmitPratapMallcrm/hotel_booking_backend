@@ -5,10 +5,14 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Payment;
+use App\Models\Hotel;
+use App\Models\Booking;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Hash;
 class UserController extends Controller
 {
+  
     public function userbyid($id)
     {
      $users = DB::table('users')->where('id' , $id )->get();

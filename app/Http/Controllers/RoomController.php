@@ -127,13 +127,6 @@ class RoomController extends Controller
 }
     public function roombyid($id)
         {
-            // $post = DB::table('hotels')->join('users', 'users.id' , '=' ,'hotels.user_id')->simplepaginate(6);
-            // $pageCount= count(Hotel::all())/6;
-            // return response()->json(
-            //     ['paginate'=>$post,
-            //     'page_count'=>ceil($pageCount)
-            //     ]
-            // );
          $rooms = DB::table('rooms')->where('hotel_id' , $id )->get();
          return response()->json($rooms);
         }

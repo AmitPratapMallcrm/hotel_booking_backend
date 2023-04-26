@@ -5,9 +5,6 @@ use Illuminate\Http\Request;
 use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 class HotelController extends Controller
 {
@@ -37,14 +34,14 @@ class HotelController extends Controller
     }
     public function shows($id)
     {
-       $hotel=Hotel::join('rooms', 'hotels.id', '=', 'rooms.hotel_id')
-               ->select('hotels.*','rooms.*')->where('hotels.id',$id)->get();
-       // $hotel =  Hotel::find($id)->room;
+
+    $hotel=DB::table('hotels')->join('rooms', 'hotels.id', '=', 'rooms.hotel_id')
+                ->select('hotels.*','rooms.*')->where('hotels.id',$id)->get();
         if($hotel)
         {
             return response()->json([
                 'status'=>200,
-                'hotel'=>$hotel,
+               'hotel'=>$hotel,
             ], 200);
         }
         else{
@@ -153,19 +150,14 @@ class HotelController extends Controller
         }
         
         $hotel->delete();
-
-
-        // $hotels = Hotel::find($id);
-        // $hotels->delete();
-        // return response()->json(' deleted!');
+  return response()->json(' deleted!');
+       
     }
     
     public function hotelbyid($id)
     {
-       
-    //  $users = DB::table('customers')->where('user_id' , $id )->get();
-    //  return response()->json($users);
-    $hotels = User::join('hotels', 'users.id', '=', 'hotels.user_id')
+
+    $hotels = DB::table('users')->join('hotels', 'users.id', '=', 'hotels.user_id')
     ->select('users.*', 'hotels.*')->where('user_id' , $id )
     ->get();    
     return response()->json($hotels);

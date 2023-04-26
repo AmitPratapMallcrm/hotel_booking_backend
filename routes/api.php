@@ -32,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-
+Route::post('/createhotel', [RegisterController::class, 'createhotel']);
 Route::post('/customer', [CustomerController::class, 'store']);
 Route::post('/register', [UserController::class, 'store']);
 Route::post('/login', [LoginController::class, 'check']);

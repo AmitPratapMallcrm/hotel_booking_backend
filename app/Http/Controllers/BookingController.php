@@ -2,9 +2,8 @@
 namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
-use App\Models\Hotel;
-use App\Models\Customer;
 use App\Models\Booking;
 class BookingController extends Controller
 {
@@ -18,24 +17,12 @@ $bookings = Booking::all();
 
     public function detail($id)
     {
-        //imp
-      //  $bookings = Booking::where('customer_id', $id)->get();
-        // $bookings = Booking::where('customer_id', $id);
-        // $hotel_name=$bookings->hotel->user->name;
-        // return response()->json($hotel_name);
-// imp
-        // $hotelName = Booking::select('users.name')
-        //         ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
-        //         ->join('users', 'hotels.user_id', '=', 'users.id')
-        //         ->where('bookings.customer_id', $id)
-        //         ->value('hotels.name');
-        $hotelName = Booking::select('users.name','bookings.price','bookings.arival','bookings.departure')
+        $hotelName = DB::table('bookings')->select('users.name','bookings.price','bookings.arival','bookings.departure')
             ->join('hotels', 'bookings.hotel_id', '=', 'hotels.id')
             ->join('users', 'hotels.user_id', '=', 'users.id')
             ->where('bookings.customer_id', $id)
             ->get();
 
-//->pluck('name')
          return response()->json($hotelName);
     }
 
@@ -44,15 +31,15 @@ $bookings = Booking::all();
     public function detailhotel($id)
     {
 
-        $customerName = Booking::select('users.name','bookings.price','bookings.arival','bookings.departure')
+        $customerName = DB::table('bookings')->select('users.name','bookings.price','bookings.arival','bookings.departure')
             ->join('customers', 'bookings.customer_id', '=', 'customers.id')
             ->join('users', 'customers.user_id', '=', 'users.id')
             ->where('bookings.hotel_id', $id)
             ->get()
             ;
-//->pluck('name')
          return response()->json($customerName);
     }
+
     public function hotelbooking($id)
     {
         $bookings = Booking::all()->where('hotel_id', '=', $id);
